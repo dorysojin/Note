@@ -9,11 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var settingTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Note"
+        self.navigationItem.title = "Note"
         self.makeRightButtons()
+        
+        let listCellnib = UINib(nibName: "ListCell", bundle: nil)
+        settingTableView.register(listCellnib, forCellReuseIdentifier: "ListCell")
+        
     }
     
     func makeRightButtons() {

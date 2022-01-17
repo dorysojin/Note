@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var settingTableView: UITableView!
+    @IBOutlet weak var noteListTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         self.makeRightButtons()
         
         let listCellnib = UINib(nibName: "ListCell", bundle: nil)
-        settingTableView.register(listCellnib, forCellReuseIdentifier: "ListCell")
+        noteListTableView.register(listCellnib, forCellReuseIdentifier: "ListCell")
         
     }
     
@@ -42,5 +42,17 @@ class ViewController: UIViewController {
     }
     
 
+} // ViewController Class
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    
 }
 

@@ -11,9 +11,30 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.title = "Note"
+        self.makeRightButtons()
     }
-
+    
+    func makeRightButtons() {
+        let editButtonImage = UIImage(systemName: "pencil")
+        let editButton = UIBarButtonItem(image: editButtonImage, style: .done, target: self, action: #selector(editLists))
+        editButton.tintColor = .black
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewList))
+        addButton.tintColor = .black
+        
+        navigationItem.rightBarButtonItems = [addButton, editButton]
+    }
+    
+    @objc func editLists() {
+        print("click Edit Button")
+    }
+    
+    @objc func addNewList() {
+        print("click Add Button")
+    }
+    
 
 }
 

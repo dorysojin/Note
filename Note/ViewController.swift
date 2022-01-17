@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         let listCellnib = UINib(nibName: "ListCell", bundle: nil)
         noteListTableView.register(listCellnib, forCellReuseIdentifier: "ListCell")
         
+        noteListTableView.delegate = self
+        noteListTableView.dataSource = self
     }
     
     func makeRightButtons() {
@@ -50,7 +52,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
+        return cell
     }
     
     

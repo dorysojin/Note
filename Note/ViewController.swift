@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Note"
+        self.setNavigationBarTitle()
         self.makeRightButtons()
         
         let listCellnib = UINib(nibName: "ListCell", bundle: nil)
@@ -43,7 +43,28 @@ class ViewController: UIViewController {
         print("click Add Button")
     }
     
-
+    func setNavigationBarTitle() {
+        let titleButton = UIButton()
+        titleButton.setTitle("Note ", for: .normal)
+        titleButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        titleButton.setTitleColor(UIColor.black, for: .normal)
+        titleButton.addTarget(self, action: #selector(chooseDate(sender:)), for: .touchUpInside)
+        
+        let titleButtonImage = UIButton()
+        titleButtonImage.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        titleButtonImage.tintColor = .lightGray
+        titleButtonImage.addTarget(self, action: #selector(chooseDate(sender:)), for: .touchUpInside)
+        
+        let titleStackView = UIStackView(arrangedSubviews: [titleButton, titleButtonImage])
+        titleStackView.axis = .horizontal
+        titleStackView.frame.size.width = titleButton.frame.width + titleButtonImage.frame.width
+        
+        navigationItem.titleView = titleStackView
+    }
+    
+    @objc func chooseDate(sender: UIButton) {
+        print("button click")
+    }
 } // ViewController Class
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{

@@ -11,6 +11,10 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var noteListTableView: UITableView!
     
+    let dateTitle = UILabel()
+    var titleDatePicker = UIDatePicker()
+    var datePrickerToolBar = UIToolbar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,26 +48,62 @@ class ViewController: UIViewController {
     }
     
     func setNavigationBarTitle() {
+        dateTitle.text = getCurrentDate()
+        dateTitle.font = UIFont.systemFont(ofSize: 18)
+        dateTitle.textColor = .black
+        
         let titleButton = UIButton()
-        titleButton.setTitle("Note ", for: .normal)
-        titleButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        titleButton.setTitleColor(UIColor.black, for: .normal)
-        titleButton.addTarget(self, action: #selector(chooseDate(sender:)), for: .touchUpInside)
+        titleButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        titleButton.tintColor = .lightGray
+        titleButton.addTarget(self, action: #selector(chooseDate), for: .touchUpInside)
         
-        let titleButtonImage = UIButton()
-        titleButtonImage.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-        titleButtonImage.tintColor = .lightGray
-        titleButtonImage.addTarget(self, action: #selector(chooseDate(sender:)), for: .touchUpInside)
-        
-        let titleStackView = UIStackView(arrangedSubviews: [titleButton, titleButtonImage])
+        let titleStackView = UIStackView(arrangedSubviews: [dateTitle, titleButton])
         titleStackView.axis = .horizontal
-        titleStackView.frame.size.width = titleButton.frame.width + titleButtonImage.frame.width
+        titleStackView.frame.size.width = dateTitle.frame.width + titleButton.frame.width
         
-        navigationItem.titleView = titleStackView
+        self.navigationItem.titleView = titleStackView
     }
     
-    @objc func chooseDate(sender: UIButton) {
-        print("button click")
+    @objc func chooseDate(_ sender: UIButton) {
+        titleDatePicker.datePickerMode = .date
+        titleDatePicker.preferredDatePickerStyle = .wheels
+        titleDatePicker.backgroundColor = UIColor.white
+        titleDatePicker.autoresizingMask = .flexibleWidth
+        titleDatePicker.locale = Locale(identifier: "ko-KR")
+        
+        titleDatePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+        titleDatePicker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(titleDatePicker)
+                    
+        datePrickerToolBar = UIToolbar(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        datePrickerToolBar.barTintColor = UIColor.white
+        datePrickerToolBar.sizeToFit()
+        
+        datePrickerToolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
+        self.view.addSubview(datePrickerToolBar)
+    }
+    
+    @objc func dateChanged(_ sender: UIDatePicker) {
+        let selected = sender
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy.MM.dd"
+        dateFormatter.locale = Locale(identifier: "ko")
+        dateTitle.text = "\(dateFormatter.string(from: selected.date)) "
+    }
+
+    @objc func onDoneButtonClick() {
+        datePrickerToolBar.removeFromSuperview()
+        titleDatePicker.removeFromSuperview()
+        //그 선택한 날짜의 목록으로 바뀌어야 함
+    }
+    
+    func getCurrentDate() -> String {
+        let current = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy.MM.dd "
+        dateFormatter.locale = Locale(identifier: "ko")
+
+        return dateFormatter.string(from: current)
     }
 } // ViewController Class
 

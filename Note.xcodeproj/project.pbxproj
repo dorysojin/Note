@@ -16,6 +16,8 @@
 		2336A398279300AF009C7F18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2336A396279300AF009C7F18 /* LaunchScreen.storyboard */; };
 		2336A3A3279300AF009C7F18 /* NoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3A2279300AF009C7F18 /* NoteTests.swift */; };
 		2336A3AE279300AF009C7F18 /* NoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3AD279300AF009C7F18 /* NoteUITests.swift */; };
+		2336A3D02795378E009C7F18 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3CE2795378E009C7F18 /* ListCell.swift */; };
+		2336A3D12795378E009C7F18 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2336A3CF2795378E009C7F18 /* ListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		2336A3A9279300AF009C7F18 /* NoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2336A3AD279300AF009C7F18 /* NoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteUITests.swift; sourceTree = "<group>"; };
 		2336A3AF279300AF009C7F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2336A3CE2795378E009C7F18 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		2336A3CF2795378E009C7F18 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 				2336A38A279300AD009C7F18 /* SceneDelegate.swift */,
 				2336A38C279300AD009C7F18 /* ViewController.swift */,
 				2336A38E279300AD009C7F18 /* Main.storyboard */,
+				2336A3CE2795378E009C7F18 /* ListCell.swift */,
+				2336A3CF2795378E009C7F18 /* ListCell.xib */,
 				2336A394279300AF009C7F18 /* Assets.xcassets */,
 				2336A396279300AF009C7F18 /* LaunchScreen.storyboard */,
 				2336A399279300AF009C7F18 /* Info.plist */,
@@ -235,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2336A398279300AF009C7F18 /* LaunchScreen.storyboard in Resources */,
+				2336A3D12795378E009C7F18 /* ListCell.xib in Resources */,
 				2336A395279300AF009C7F18 /* Assets.xcassets in Resources */,
 				2336A390279300AD009C7F18 /* Main.storyboard in Resources */,
 			);
@@ -264,6 +271,7 @@
 				2336A38D279300AD009C7F18 /* ViewController.swift in Sources */,
 				2336A389279300AD009C7F18 /* AppDelegate.swift in Sources */,
 				2336A38B279300AD009C7F18 /* SceneDelegate.swift in Sources */,
+				2336A3D02795378E009C7F18 /* ListCell.swift in Sources */,
 				2336A393279300AD009C7F18 /* Note.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +450,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Note/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,7 +458,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SojinPark.Note;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -460,6 +469,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Note/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,7 +477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = SojinPark.Note;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

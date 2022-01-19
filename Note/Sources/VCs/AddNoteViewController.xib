@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddNoteViewController" customModule="Note" customModuleProvider="target">
+            <connections>
+                <outlet property="popUpView" destination="B9e-qW-gzo" id="ahg-aR-qGj"/>
+                <outlet property="saveButton_Outlet" destination="MiE-oN-gud" id="v0T-aa-AeF"/>
+                <outlet property="titleTextField" destination="mfe-hH-av1" id="qYM-yV-vye"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B9e-qW-gzo">
+                    <rect key="frame" x="25" y="368" width="364" height="160"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력하세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfe-hH-av1">
+                            <rect key="frame" x="25" y="25" width="314" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="8GA-iE-YyF"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="x5q-Ux-39M"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiE-oN-gud">
+                            <rect key="frame" x="25" y="85" width="314" height="50"/>
+                            <color key="backgroundColor" systemColor="systemGray4Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="otp-K3-xwC"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="완료"/>
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="-1" eventType="touchUpInside" id="sJA-nY-0Ak"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="MiE-oN-gud" firstAttribute="leading" secondItem="B9e-qW-gzo" secondAttribute="leading" constant="25" id="N6Z-8c-CgN"/>
+                        <constraint firstAttribute="height" constant="160" id="Uju-RR-gpp"/>
+                        <constraint firstAttribute="trailing" secondItem="MiE-oN-gud" secondAttribute="trailing" constant="25" id="VBy-dt-yHc"/>
+                        <constraint firstItem="mfe-hH-av1" firstAttribute="leading" secondItem="B9e-qW-gzo" secondAttribute="leading" constant="25" id="ZOI-J4-oCS"/>
+                        <constraint firstItem="MiE-oN-gud" firstAttribute="top" secondItem="mfe-hH-av1" secondAttribute="bottom" constant="15" id="avE-v9-cfH"/>
+                        <constraint firstAttribute="trailing" secondItem="mfe-hH-av1" secondAttribute="trailing" constant="25" id="bAN-ni-WEx"/>
+                        <constraint firstItem="mfe-hH-av1" firstAttribute="top" secondItem="B9e-qW-gzo" secondAttribute="top" constant="25" id="lfW-lm-H6u"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="B9e-qW-gzo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="Joo-X6-cEr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="B9e-qW-gzo" secondAttribute="trailing" constant="25" id="Yvj-fE-2Y1"/>
+                <constraint firstItem="B9e-qW-gzo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rsl-DA-5lq"/>
+                <constraint firstItem="B9e-qW-gzo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="sBq-ab-rQc"/>
+            </constraints>
+            <point key="canvasLocation" x="-197" y="94"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

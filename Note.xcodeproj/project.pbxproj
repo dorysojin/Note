@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2336A389279300AD009C7F18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A388279300AD009C7F18 /* AppDelegate.swift */; };
 		2336A38B279300AD009C7F18 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A38A279300AD009C7F18 /* SceneDelegate.swift */; };
-		2336A38D279300AD009C7F18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A38C279300AD009C7F18 /* ViewController.swift */; };
+		2336A38D279300AD009C7F18 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A38C279300AD009C7F18 /* MainViewController.swift */; };
 		2336A390279300AD009C7F18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2336A38E279300AD009C7F18 /* Main.storyboard */; };
 		2336A393279300AD009C7F18 /* Note.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2336A391279300AD009C7F18 /* Note.xcdatamodeld */; };
 		2336A395279300AF009C7F18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2336A394279300AF009C7F18 /* Assets.xcassets */; };
@@ -18,6 +18,9 @@
 		2336A3AE279300AF009C7F18 /* NoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3AD279300AF009C7F18 /* NoteUITests.swift */; };
 		2336A3D02795378E009C7F18 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3CE2795378E009C7F18 /* ListCell.swift */; };
 		2336A3D12795378E009C7F18 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2336A3CF2795378E009C7F18 /* ListCell.xib */; };
+		2336A401279717EE009C7F18 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A400279717EE009C7F18 /* TabBarController.swift */; };
+		2336A4142797C57C009C7F18 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A4122797C57C009C7F18 /* AddNoteViewController.swift */; };
+		2336A4152797C57C009C7F18 /* AddNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2336A4132797C57C009C7F18 /* AddNoteViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +44,7 @@
 		2336A385279300AD009C7F18 /* Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2336A388279300AD009C7F18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2336A38A279300AD009C7F18 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2336A38C279300AD009C7F18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2336A38C279300AD009C7F18 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2336A38F279300AD009C7F18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2336A392279300AD009C7F18 /* Note.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Note.xcdatamodel; sourceTree = "<group>"; };
 		2336A394279300AF009C7F18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +58,9 @@
 		2336A3AF279300AF009C7F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2336A3CE2795378E009C7F18 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		2336A3CF2795378E009C7F18 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
+		2336A400279717EE009C7F18 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2336A4122797C57C009C7F18 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
+		2336A4132797C57C009C7F18 /* AddNoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNoteViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,16 +111,10 @@
 		2336A387279300AD009C7F18 /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				2336A388279300AD009C7F18 /* AppDelegate.swift */,
-				2336A38A279300AD009C7F18 /* SceneDelegate.swift */,
-				2336A38C279300AD009C7F18 /* ViewController.swift */,
-				2336A38E279300AD009C7F18 /* Main.storyboard */,
-				2336A3CE2795378E009C7F18 /* ListCell.swift */,
-				2336A3CF2795378E009C7F18 /* ListCell.xib */,
-				2336A394279300AF009C7F18 /* Assets.xcassets */,
-				2336A396279300AF009C7F18 /* LaunchScreen.storyboard */,
-				2336A399279300AF009C7F18 /* Info.plist */,
+				2336A3EC2796A869009C7F18 /* Resources */,
+				2336A3ED2796A871009C7F18 /* Sources */,
 				2336A391279300AD009C7F18 /* Note.xcdatamodeld */,
+				2336A399279300AF009C7F18 /* Info.plist */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -135,6 +135,55 @@
 				2336A3AF279300AF009C7F18 /* Info.plist */,
 			);
 			path = NoteUITests;
+			sourceTree = "<group>";
+		};
+		2336A3EB2796A809009C7F18 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				2336A38C279300AD009C7F18 /* MainViewController.swift */,
+				2336A400279717EE009C7F18 /* TabBarController.swift */,
+				2336A4122797C57C009C7F18 /* AddNoteViewController.swift */,
+				2336A4132797C57C009C7F18 /* AddNoteViewController.xib */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
+		2336A3EC2796A869009C7F18 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2336A394279300AF009C7F18 /* Assets.xcassets */,
+				2336A388279300AD009C7F18 /* AppDelegate.swift */,
+				2336A38A279300AD009C7F18 /* SceneDelegate.swift */,
+				2336A3EE2796A88F009C7F18 /* Storyboards */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2336A3ED2796A871009C7F18 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2336A3EB2796A809009C7F18 /* VCs */,
+				2336A3EF2796A935009C7F18 /* Cells */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2336A3EE2796A88F009C7F18 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2336A38E279300AD009C7F18 /* Main.storyboard */,
+				2336A396279300AF009C7F18 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		2336A3EF2796A935009C7F18 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2336A3CE2795378E009C7F18 /* ListCell.swift */,
+				2336A3CF2795378E009C7F18 /* ListCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +292,7 @@
 				2336A398279300AF009C7F18 /* LaunchScreen.storyboard in Resources */,
 				2336A3D12795378E009C7F18 /* ListCell.xib in Resources */,
 				2336A395279300AF009C7F18 /* Assets.xcassets in Resources */,
+				2336A4152797C57C009C7F18 /* AddNoteViewController.xib in Resources */,
 				2336A390279300AD009C7F18 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,10 +318,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2336A38D279300AD009C7F18 /* ViewController.swift in Sources */,
+				2336A4142797C57C009C7F18 /* AddNoteViewController.swift in Sources */,
+				2336A38D279300AD009C7F18 /* MainViewController.swift in Sources */,
 				2336A389279300AD009C7F18 /* AppDelegate.swift in Sources */,
 				2336A38B279300AD009C7F18 /* SceneDelegate.swift in Sources */,
 				2336A3D02795378E009C7F18 /* ListCell.swift in Sources */,
+				2336A401279717EE009C7F18 /* TabBarController.swift in Sources */,
 				2336A393279300AD009C7F18 /* Note.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

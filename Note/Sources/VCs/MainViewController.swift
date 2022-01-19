@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
         
         let listCellnib = UINib(nibName: "ListCell", bundle: nil)
         noteListTableView.register(listCellnib, forCellReuseIdentifier: "ListCell")
-        
+        noteListTableView.separatorStyle = .none
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
         
@@ -48,6 +48,7 @@ class MainViewController: UIViewController {
     }
     
     // NoteList is entities name
+    // MARK: fetchData - 데이터 불러오기
     func fetchData() {
         let fetchReqeust: NSFetchRequest<NoteList> = NoteList.fetchRequest()
         let context = appdelegate.persistentContainer.viewContext
@@ -60,17 +61,22 @@ class MainViewController: UIViewController {
     
     func makeRightButton() {
         let editButtonImage = UIImage(systemName: "highlighter")
-        let editButton = UIBarButtonItem(image: editButtonImage, style: .done, target: self, action: #selector(editLists))
+        let editButton = UIBarButtonItem(image: editButtonImage, style: .done, target: self, action: #selector(editButtonTapped))
         editButton.tintColor = .darkGray
 
         navigationItem.rightBarButtonItem = editButton
     }
     
-    @objc func editLists() {
+    @objc func editButtonTapped() {
         print("click Edit Button")
     }
-    @IBAction func addNoteButton(_ sender: UIButton) {
-        print("click Add Button")
+    
+    @IBAction func addNoteButtonTapped(_ sender: UIButton) {
+        let addNoteVC = AddNoteViewController.init(nibName: "AddNoteViewController", bundle: nil)
+        addNoteVC.delegate = self // 데이터 부르고 리로드
+        addNoteVC.modalPresentationStyle = .overFullScreen
+        self.present(addNoteVC, animated: false, completion: nil)
+        
     }
     
     func setDateTitle() {
@@ -126,8 +132,9 @@ class MainViewController: UIViewController {
 
         return formatter.string(from: current)
     }
-} // ViewController Class
+} // MainViewController Class
 
+// MARK: TableView Delegate and DataSource
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.noteList.count
@@ -141,3 +148,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+// MARK:  AddNoteDeligate - 추가 버튼 데이터 불러온 후 리로드
+extension MainViewController: AddNoteViewControllerDeligate {
+    func didFinishSaveDate() {
+        self.fetchData() // 데이터를 불러오고
+        self.noteListTableView.reloadData() // 리로드
+    }
+}

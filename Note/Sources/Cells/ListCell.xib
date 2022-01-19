@@ -18,19 +18,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0j-XF-oKU">
-                        <rect key="frame" x="58" y="15.5" width="242" height="21"/>
+                        <rect key="frame" x="55" y="14" width="245" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eGh-wR-pTW">
-                        <rect key="frame" x="20" y="13" width="28" height="25.5"/>
+                        <rect key="frame" x="20" y="13" width="25" height="22.5"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="28" id="58i-yu-YCl"/>
-                            <constraint firstAttribute="height" constant="28" id="x6h-9y-1Pp"/>
+                            <constraint firstAttribute="width" constant="25" id="58i-yu-YCl"/>
+                            <constraint firstAttribute="height" constant="25" id="x6h-9y-1Pp"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZIz-M3-YRx">
+                        <rect key="frame" x="27" y="45" width="46" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="P0j-XF-oKU" secondAttribute="trailing" constant="20" id="Scx-TR-9hY"/>

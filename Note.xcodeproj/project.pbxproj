@@ -141,9 +141,9 @@
 			isa = PBXGroup;
 			children = (
 				2336A38C279300AD009C7F18 /* MainViewController.swift */,
-				2336A400279717EE009C7F18 /* TabBarController.swift */,
 				2336A4122797C57C009C7F18 /* AddNoteViewController.swift */,
 				2336A4132797C57C009C7F18 /* AddNoteViewController.xib */,
+				2336A400279717EE009C7F18 /* TabBarController.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";

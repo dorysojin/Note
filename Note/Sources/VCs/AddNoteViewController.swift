@@ -22,9 +22,24 @@ class AddNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setPopUpView()
-        setSaveButton()
+        makeSaveButtonDesign()
+        setTextFieldBorder()
+        titleTextField.delegate = self
+        titleTextField.addTarget(self, action: #selector(changeSaveButton), for: .editingChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.titleTextField.becomeFirstResponder()
+    }
+    
+    func setTextFieldBorder() {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: titleTextField.frame.size.height-1, width: titleTextField.frame.width, height: 2)
+        border.backgroundColor = UIColor.darkGray.cgColor
+        
+        titleTextField.borderStyle = .none
+        titleTextField.layer.addSublayer((border))
     }
     
     func setPopUpView() {
@@ -38,9 +53,20 @@ class AddNoteViewController: UIViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
-    func setSaveButton() {
+    @objc func changeSaveButton() {
+        guard let textCheck = titleTextField.text else { return }
+        if !textCheck.trimmingCharacters(in: .whitespaces).isEmpty {
+            saveButton_Outlet.isEnabled = true
+            saveButton_Outlet.layer.backgroundColor = UIColor.black.cgColor
+        }else{
+            saveButton_Outlet.isEnabled = false
+            saveButton_Outlet.layer.backgroundColor = UIColor.systemGray5.cgColor
+        }
+    }
+    
+    func makeSaveButtonDesign() {
         saveButton_Outlet.layer.cornerRadius = 10
-        
+        saveButton_Outlet.isEnabled = false
     }
 
     @IBAction func saveButtonTapped(_ sender: UIButton) {
@@ -54,8 +80,8 @@ class AddNoteViewController: UIViewController {
             return
         }
         
-        // 오브젝트 생성
-        object.title = titleTextField.text
+        // 어떤 값을 넣어서 저장할지 오브젝트 형태로 구조 잡기
+        object.title = titleTextField.text?.trimmingCharacters(in: .whitespaces)
         object.date = Date()
         object.uuid = UUID()
         
@@ -64,8 +90,19 @@ class AddNoteViewController: UIViewController {
         
         //저장 끝나는 시점에 호출한다
         delegate?.didFinishSaveDate()
-        
         // 화면 닫기
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func backGroundTapped(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+        self.dismiss(animated: false)
+    }
+}
+
+extension AddNoteViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textFeirld: UITextField) -> Bool{
+        saveButtonTapped(self.saveButton_Outlet)
+        return true
     }
 }

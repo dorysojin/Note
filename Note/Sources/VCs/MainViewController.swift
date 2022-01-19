@@ -15,15 +15,20 @@ class MainViewController: UIViewController {
     @IBOutlet weak var addNoteButton_Outlet: UIButton!
     
     let appdelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    let formatter = DateFormatter()
     var titleDatePicker = UIDatePicker()
     var datePrickerToolBar = UIToolbar()
+    
     var noteList = [NoteList]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setDateTitle()
         makeRightButton()
+        makeAddButtonDesign()
         
         let listCellnib = UINib(nibName: "ListCell", bundle: nil)
         noteListTableView.register(listCellnib, forCellReuseIdentifier: "ListCell")
@@ -31,20 +36,11 @@ class MainViewController: UIViewController {
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
         
-        setAddButton()
         fetchData()
         noteListTableView.reloadData()
-        
+
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-    }
-    
-    func setAddButton() {
-        addNoteButton_Outlet.layer.cornerRadius = 30
-        addNoteButton_Outlet.layer.shadowColor = UIColor.black.cgColor
-        addNoteButton_Outlet.layer.shadowOffset = CGSize(width: 1, height: 1)
-        addNoteButton_Outlet.layer.shadowRadius = 6
-        addNoteButton_Outlet.layer.shadowOpacity = 0.15
     }
     
     // NoteList is entities name
@@ -68,7 +64,15 @@ class MainViewController: UIViewController {
     }
     
     @objc func editButtonTapped() {
-        print("click Edit Button")
+        
+    }
+        
+    func makeAddButtonDesign() {
+        addNoteButton_Outlet.layer.cornerRadius = addNoteButton_Outlet.bounds.height / 2
+        addNoteButton_Outlet.layer.shadowColor = UIColor.black.cgColor
+        addNoteButton_Outlet.layer.shadowOffset = CGSize(width: 1, height: 1)
+        addNoteButton_Outlet.layer.shadowRadius = 6
+        addNoteButton_Outlet.layer.shadowOpacity = 0.15
     }
     
     @IBAction func addNoteButtonTapped(_ sender: UIButton) {
@@ -76,7 +80,6 @@ class MainViewController: UIViewController {
         addNoteVC.delegate = self // 데이터 부르고 리로드
         addNoteVC.modalPresentationStyle = .overFullScreen
         self.present(addNoteVC, animated: false, completion: nil)
-        
     }
     
     func setDateTitle() {
@@ -111,10 +114,7 @@ class MainViewController: UIViewController {
     
     @objc func dateChanged(_ sender: UIDatePicker) {
         let selected = sender
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 \nMM월 dd일"
-        formatter.locale = Locale(identifier: "ko")
-        
+        dateFormatter()        
         dateTitleLabel.text = formatter.string(from: selected.date)
     }
 
@@ -126,11 +126,25 @@ class MainViewController: UIViewController {
     
     func getCurrentDate() -> String {
         let current = Date()
-        let formatter = DateFormatter()
+        dateFormatter()
+        return formatter.string(from: current)
+    }
+    
+    func dateFormatter() {
         formatter.dateFormat = "yyyy년 \nMM월 dd일"
         formatter.locale = Locale(identifier: "ko")
-
-        return formatter.string(from: current)
+    }
+    
+    // 노트 왼쪽으로 밀어서 삭제
+    func deleteNote(object: NSManagedObject) -> Bool {
+        context.delete(object)
+        do {
+            try context.save()
+            return true
+        } catch {
+            context.rollback()
+            return false
+        }
     }
 } // MainViewController Class
 
@@ -143,8 +157,19 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListCell
         cell.listTitleLabel.text = noteList[indexPath.row].title
-
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let object = self.noteList[indexPath.row]
+        if self.deleteNote(object: object), editingStyle == .delete {
+                noteList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "삭제"
     }
 }
 

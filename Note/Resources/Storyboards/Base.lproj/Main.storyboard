@@ -61,7 +61,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                                 </state>
                                 <connections>
-                                    <action selector="chooseDate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Afi-Dq-UkP"/>
+                                    <action selector="selectDate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ami-gk-yP4"/>
                                 </connections>
                             </button>
                         </subviews>

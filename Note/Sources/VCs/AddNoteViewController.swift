@@ -8,12 +8,14 @@
 import UIKit
 import CoreData
 
+// 테이블 뷰 갱신을 위한 프로토콜
 protocol AddNoteViewControllerDeligate: AnyObject {
-    func didFinishSaveDate()
+    func didFinishSaveData()
 }
 
 class AddNoteViewController: UIViewController {
 
+    // 프로토콜 펑션을 갖고 있는 변수 생성 (비어 있을 수 있으니 옵셔널)
     weak var delegate: AddNoteViewControllerDeligate?
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -70,28 +72,28 @@ class AddNoteViewController: UIViewController {
     }
 
     @IBAction func saveButtonTapped(_ sender: UIButton) {
+        saveNote()
+        delegate?.didFinishSaveData() // 저장 끝나는 시점에 데이터를 호출한다
+        // 화면 닫기
+        self.dismiss(animated: true)
+    }
+    
+    //MARK: - 해당 정보를 코어데이터에 저장한다
+    func saveNote() {
         // 구조 만들기
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         let context = appDelegate.persistentContainer.viewContext
         
         guard let entityDescription = NSEntityDescription.entity(forEntityName: "NoteList", in: context) else { return }
-        
-        guard let object = NSManagedObject(entity: entityDescription, insertInto: context) as? NoteList else{
-            return
-        }
+        guard let note = NSManagedObject(entity: entityDescription, insertInto: context) as? NoteList else { return }
         
         // 어떤 값을 넣어서 저장할지 오브젝트 형태로 구조 잡기
-        object.title = titleTextField.text?.trimmingCharacters(in: .whitespaces)
-        object.date = Date()
-        object.uuid = UUID()
+        note.title = titleTextField.text?.trimmingCharacters(in: .whitespaces)
+        note.date = Date()
+        note.uuid = UUID()
         
         // 저장
         appDelegate.saveContext()
-        
-        //저장 끝나는 시점에 호출한다
-        delegate?.didFinishSaveDate()
-        // 화면 닫기
-        self.dismiss(animated: true)
     }
     
     @IBAction func backGroundTapped(_ sender: UITapGestureRecognizer) {

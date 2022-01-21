@@ -23,6 +23,7 @@
 		2336A4152797C57C009C7F18 /* AddNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2336A4132797C57C009C7F18 /* AddNoteViewController.xib */; };
 		2336A432279957CC009C7F18 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A430279957CC009C7F18 /* SelectDateViewController.swift */; };
 		2336A433279957CC009C7F18 /* SelectDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2336A431279957CC009C7F18 /* SelectDateViewController.xib */; };
+		2336A440279AE173009C7F18 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A43F279AE173009C7F18 /* NoteDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		2336A4132797C57C009C7F18 /* AddNoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNoteViewController.xib; sourceTree = "<group>"; };
 		2336A430279957CC009C7F18 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		2336A431279957CC009C7F18 /* SelectDateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectDateViewController.xib; sourceTree = "<group>"; };
+		2336A43F279AE173009C7F18 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,9 +148,8 @@
 			children = (
 				2336A38C279300AD009C7F18 /* MainViewController.swift */,
 				2336A4122797C57C009C7F18 /* AddNoteViewController.swift */,
-				2336A4132797C57C009C7F18 /* AddNoteViewController.xib */,
 				2336A430279957CC009C7F18 /* SelectDateViewController.swift */,
-				2336A431279957CC009C7F18 /* SelectDateViewController.xib */,
+				2336A43F279AE173009C7F18 /* NoteDetailViewController.swift */,
 				2336A400279717EE009C7F18 /* TabBarController.swift */,
 			);
 			path = VCs;
@@ -178,6 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				2336A38E279300AD009C7F18 /* Main.storyboard */,
+				2336A4132797C57C009C7F18 /* AddNoteViewController.xib */,
+				2336A431279957CC009C7F18 /* SelectDateViewController.xib */,
+				2336A3CF2795378E009C7F18 /* ListCell.xib */,
 				2336A396279300AF009C7F18 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -187,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				2336A3CE2795378E009C7F18 /* ListCell.swift */,
-				2336A3CF2795378E009C7F18 /* ListCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			files = (
 				2336A4142797C57C009C7F18 /* AddNoteViewController.swift in Sources */,
 				2336A38D279300AD009C7F18 /* MainViewController.swift in Sources */,
+				2336A440279AE173009C7F18 /* NoteDetailViewController.swift in Sources */,
 				2336A389279300AD009C7F18 /* AppDelegate.swift in Sources */,
 				2336A38B279300AD009C7F18 /* SceneDelegate.swift in Sources */,
 				2336A3D02795378E009C7F18 /* ListCell.swift in Sources */,

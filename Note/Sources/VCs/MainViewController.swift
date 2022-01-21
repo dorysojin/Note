@@ -17,26 +17,43 @@ class MainViewController: UIViewController {
 //    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var noteListsInCoreData = [NoteList]()
+    var filterNoteLists = [NoteList]()
+    var selectedDatePicker = Date()
     
     // MARK: ViewController Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setDateTitle()
-        makeEditButton()
+        setNavigationBar()
         makeAddButtonDesign()
         
+        setNoteTableView()
+        
+//        fetchData()
+        fetchSelectedData()
+        noteListTableView.reloadData()
+    }
+    
+    // MARK: - 기본 세팅들
+    func setDateTitle() {
+        dateTitleLabel.text = getCurrentDate()
+        dateTitleLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        dateTitleLabel.textColor = .black
+    }
+    
+    func setNavigationBar() {
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        
+        makeEditButton()
+    }
+    
+    func setNoteTableView() {
         let listCellNib = UINib(nibName: "ListCell", bundle: nil)
         noteListTableView.register(listCellNib, forCellReuseIdentifier: "ListCell")
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
         noteListTableView.separatorStyle = .none
-        
-        fetchData()
-        noteListTableView.reloadData()
-
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
     }
     
     func makeEditButton() {
@@ -46,36 +63,12 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = editButton
     }
     
-    @objc func editButtonTapped() {
-        
-    }
-        
     func makeAddButtonDesign() {
         addNoteButton_Outlet.layer.cornerRadius = addNoteButton_Outlet.bounds.height / 2
         addNoteButton_Outlet.layer.shadowColor = UIColor.black.cgColor
         addNoteButton_Outlet.layer.shadowOffset = CGSize(width: 1, height: 1)
         addNoteButton_Outlet.layer.shadowRadius = 6
         addNoteButton_Outlet.layer.shadowOpacity = 0.15
-    }
-    
-    @IBAction func addNoteButtonTapped(_ sender: UIButton) {
-        let addNoteVC = AddNoteViewController.init(nibName: "AddNoteViewController", bundle: nil)
-        addNoteVC.delegate = self // MainVC와 연결
-        addNoteVC.modalPresentationStyle = .overFullScreen
-        self.present(addNoteVC, animated: false, completion: nil)
-    }
-    
-    func setDateTitle() {
-        dateTitleLabel.text = getCurrentDate()
-        dateTitleLabel.font = UIFont.boldSystemFont(ofSize: 25)
-        dateTitleLabel.textColor = .black
-    }
-
-    @IBAction func selectDate(_ sender: UIButton) {
-        let selectDateVC = SelectDateViewController.init(nibName: "SelectDateViewController", bundle: nil)
-        selectDateVC.delegate = self
-        selectDateVC.modalPresentationStyle = .overFullScreen
-        self.present(selectDateVC, animated: false, completion: nil)
     }
     
     func getCurrentDate() -> String {
@@ -86,18 +79,50 @@ class MainViewController: UIViewController {
         return formatter.string(from: current)
     }
     
+    // MARK: - 액션이 있는 것들
+    @objc func editButtonTapped() {
+        
+    }
+    
+    @IBAction func addNoteButtonTapped(_ sender: UIButton) {
+        let addNoteVC = AddNoteViewController.init(nibName: "AddNoteViewController", bundle: nil)
+        addNoteVC.delegate = self // MainVC와 연결
+        addNoteVC.modalPresentationStyle = .overFullScreen
+        self.present(addNoteVC, animated: false, completion: nil)
+    }
+
+    @IBAction func selectDate(_ sender: UIButton) {
+        let selectDateVC = SelectDateViewController.init(nibName: "SelectDateViewController", bundle: nil)
+        selectDateVC.delegate = self
+        selectDateVC.modalPresentationStyle = .overFullScreen
+        self.present(selectDateVC, animated: false, completion: nil)
+    }
+    
     // NoteList is entities name
-    // MARK: fetchData - 데이터 불러오기
-    func fetchData() {
-        let fetchReqeust: NSFetchRequest<NoteList> = NoteList.fetchRequest()
+    // MARK: fetchData - 모든 데이터 불러오기
+//    func fetchData() {
+//        let fetchRequest: NSFetchRequest<NoteList> = NoteList.fetchRequest()
+//        do {
+//            self.noteListsInCoreData = try context.fetch(fetchRequest)
+//        }catch{
+//            print(error)
+//        }
+//    }
+    // MARK: - fetchSelectedData - 선택한 날짜만 가져오기..?
+    func fetchSelectedData() {
+        let fetchRequest: NSFetchRequest<NoteList> = NoteList.fetchRequest()
+        let calendar = Calendar.current
+        let startDate = calendar.startOfDay(for: selectedDatePicker)
+        let endDate = calendar.date(byAdding: .day, value: 1, to: startDate)
+        fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date < %@", startDate as Date as CVarArg, endDate! as Date as CVarArg)
         do {
-            self.noteListsInCoreData = try context.fetch(fetchReqeust)
+            self.filterNoteLists = try context.fetch(fetchRequest)
         }catch{
             print(error)
         }
     }
     
-    // 노트 왼쪽으로 밀어서 삭제
+    // MARK: - 메인화면에서 리스트 밀어서 삭제
     func deleteNote(object: NSManagedObject) -> Bool {
         context.delete(object)
         do {
@@ -110,20 +135,21 @@ class MainViewController: UIViewController {
     }
 } // MainViewController Class
 
-// MARK: TableView Delegate and DataSource
+
+// MARK: - TableView Delegate and DataSource
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.noteListsInCoreData.count
+        return self.filterNoteLists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListCell
-        cell.listTitleLabel.text = noteListsInCoreData[indexPath.row].title
-        
+        cell.listTitleLabel.text = filterNoteLists[indexPath.row].title
+                
         return cell
     }
     
-    // 삭제기능
+    // MARK: 삭제 기능
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let note = self.noteListsInCoreData[indexPath.row]
         if self.deleteNote(object: note), editingStyle == .delete {
@@ -131,22 +157,27 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "삭제"
     }
 }
 
-// MARK:  AddNoteDeligate - 추가 버튼 데이터 불러온 후 리로드
+// MARK: - AddNoteDeligate - 추가 버튼 데이터 불러온 후 리로드
 extension MainViewController: AddNoteViewControllerDeligate {
     func didFinishSaveData() {
-        self.fetchData() // 데이터를 불러오고
+        self.fetchSelectedData() // 데이터를 불러오고
         self.noteListTableView.reloadData() // 리로드
     }
 }
 
+// MARK: - SelectDateDeligate
 extension MainViewController: SelectDateViewControllerDeligate {
-    func selectDateText(_ date: String) {
-        self.dateTitleLabel.text = date
+    func selectedDate(selectedDate: Date) {
+        selectedDatePicker = selectedDate
+        self.fetchSelectedData()
+        self.noteListTableView.reloadData()
+    }
+    func getSelectedDateText(_ selectedDate: String) {
+        self.dateTitleLabel.text = selectedDate
     }
 }

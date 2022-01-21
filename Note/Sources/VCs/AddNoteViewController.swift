@@ -89,8 +89,8 @@ class AddNoteViewController: UIViewController {
         
         // 어떤 값을 넣어서 저장할지 오브젝트 형태로 구조 잡기
         note.title = titleTextField.text?.trimmingCharacters(in: .whitespaces)
-        note.date = Date()
         note.uuid = UUID()
+        note.date = Date()
         
         // 저장
         appDelegate.saveContext()

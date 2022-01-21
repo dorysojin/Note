@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 protocol SelectDateViewControllerDeligate: AnyObject {
-    func selectDateText(_ selectedDate: String)
+    func getSelectedDateText(_ selectedDate: String)
+    func selectedDate( selectedDate: Date)
 }
 
 class SelectDateViewController: UIViewController {
@@ -23,7 +25,6 @@ class SelectDateViewController: UIViewController {
         super.viewDidLoad()
         setPopUpView()
         makeSaveButtonDesign()
-        titleDatePicker.locale = Locale(identifier: "ko-KR")
     }
     
     func setPopUpView() {
@@ -41,20 +42,16 @@ class SelectDateViewController: UIViewController {
         dateSaveButton_Outlet.layer.cornerRadius = 10
         dateSaveButton_Outlet.layer.backgroundColor = UIColor.black.cgColor
     }
-    
-    @IBAction func dateChanged(_ sender: UIDatePicker) {
-        let selected = sender
+
+    @IBAction func dateSaveButtonTapped(_ sender: UIButton) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 \nMM월 dd일"
         formatter.locale = Locale(identifier: "ko")
-        let selectedDate = formatter.string(from: selected.date)
-        delegate?.selectDateText(selectedDate)
-    }
-
-    @IBAction func dateSaveButtonTapped(_ sender: UIButton) {
-        // 선택한 날짜와 테이블 뷰 엔티티 데이트와 일 까지만 일치하면
-        // 그 테이블 뷰를 로드하고 아니면,, 모르겠다
+        
+        let dateString = formatter.string(from: titleDatePicker.date)
+        delegate?.getSelectedDateText(dateString)
+        
+        delegate?.selectedDate(selectedDate: titleDatePicker.date)
         self.dismiss(animated: false)
     }
-    
 }

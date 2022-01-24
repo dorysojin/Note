@@ -26,10 +26,13 @@
                     <rect key="frame" x="25" y="338" width="364" height="220"/>
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Gb2-gy-IPO">
-                            <rect key="frame" x="15" y="15" width="334" height="130"/>
+                            <rect key="frame" x="15" y="20" width="334" height="120"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="120" id="OEU-1l-T3Z"/>
+                            </constraints>
                         </datePicker>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1c-2t-LSi">
-                            <rect key="frame" x="20" y="155" width="324" height="50"/>
+                            <rect key="frame" x="20" y="150" width="324" height="50"/>
                             <color key="backgroundColor" systemColor="systemGray5Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Bwa-H5-XzX"/>
@@ -44,15 +47,14 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="b1c-2t-LSi" secondAttribute="bottom" constant="15" id="8fP-xl-O4Y"/>
+                        <constraint firstAttribute="bottom" secondItem="b1c-2t-LSi" secondAttribute="bottom" constant="20" id="8fP-xl-O4Y"/>
                         <constraint firstAttribute="trailing" secondItem="Gb2-gy-IPO" secondAttribute="trailing" constant="15" id="Gpi-oH-dZf"/>
                         <constraint firstItem="b1c-2t-LSi" firstAttribute="top" secondItem="Gb2-gy-IPO" secondAttribute="bottom" constant="10" id="IiZ-NP-pIa"/>
-                        <constraint firstItem="Gb2-gy-IPO" firstAttribute="top" secondItem="fGU-or-xjm" secondAttribute="top" constant="15" id="NTE-4o-YfF"/>
+                        <constraint firstItem="Gb2-gy-IPO" firstAttribute="top" secondItem="fGU-or-xjm" secondAttribute="top" constant="20" id="NTE-4o-YfF"/>
                         <constraint firstAttribute="trailing" secondItem="b1c-2t-LSi" secondAttribute="trailing" constant="20" id="Rxd-JD-S0y"/>
                         <constraint firstItem="b1c-2t-LSi" firstAttribute="centerX" secondItem="fGU-or-xjm" secondAttribute="centerX" id="VB5-tQ-Eh4"/>
                         <constraint firstItem="Gb2-gy-IPO" firstAttribute="leading" secondItem="fGU-or-xjm" secondAttribute="leading" constant="15" id="VaY-oC-6lw"/>
                         <constraint firstItem="b1c-2t-LSi" firstAttribute="leading" secondItem="fGU-or-xjm" secondAttribute="leading" constant="20" id="ZaJ-zZ-dYl"/>
-                        <constraint firstAttribute="height" constant="220" id="n8w-gV-Xyz"/>
                     </constraints>
                 </view>
             </subviews>

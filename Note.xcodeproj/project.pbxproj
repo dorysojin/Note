@@ -17,7 +17,6 @@
 		2336A3A3279300AF009C7F18 /* NoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3A2279300AF009C7F18 /* NoteTests.swift */; };
 		2336A3AE279300AF009C7F18 /* NoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3AD279300AF009C7F18 /* NoteUITests.swift */; };
 		2336A3D02795378E009C7F18 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3CE2795378E009C7F18 /* ListCell.swift */; };
-		2336A3D12795378E009C7F18 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2336A3CF2795378E009C7F18 /* ListCell.xib */; };
 		2336A401279717EE009C7F18 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A400279717EE009C7F18 /* TabBarController.swift */; };
 		2336A4142797C57C009C7F18 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A4122797C57C009C7F18 /* AddNoteViewController.swift */; };
 		2336A4152797C57C009C7F18 /* AddNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2336A4132797C57C009C7F18 /* AddNoteViewController.xib */; };
@@ -60,7 +59,6 @@
 		2336A3AD279300AF009C7F18 /* NoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteUITests.swift; sourceTree = "<group>"; };
 		2336A3AF279300AF009C7F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2336A3CE2795378E009C7F18 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
-		2336A3CF2795378E009C7F18 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		2336A400279717EE009C7F18 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2336A4122797C57C009C7F18 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		2336A4132797C57C009C7F18 /* AddNoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNoteViewController.xib; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 				2336A38E279300AD009C7F18 /* Main.storyboard */,
 				2336A4132797C57C009C7F18 /* AddNoteViewController.xib */,
 				2336A431279957CC009C7F18 /* SelectDateViewController.xib */,
-				2336A3CF2795378E009C7F18 /* ListCell.xib */,
 				2336A396279300AF009C7F18 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -299,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2336A398279300AF009C7F18 /* LaunchScreen.storyboard in Resources */,
-				2336A3D12795378E009C7F18 /* ListCell.xib in Resources */,
 				2336A433279957CC009C7F18 /* SelectDateViewController.xib in Resources */,
 				2336A395279300AF009C7F18 /* Assets.xcassets in Resources */,
 				2336A4152797C57C009C7F18 /* AddNoteViewController.xib in Resources */,

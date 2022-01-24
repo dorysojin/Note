@@ -10,8 +10,6 @@ import UIKit
 class ListCell: UITableViewCell {
 
     @IBOutlet weak var listTitleLabel: UILabel!
-    @IBOutlet weak var checkBoxImageView: UIImageView!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

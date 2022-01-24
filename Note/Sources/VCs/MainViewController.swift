@@ -8,19 +8,24 @@
 import UIKit
 import CoreData
 
+protocol MainViewControllerDelegate {
+    func didFinishAddButton(_ date: Date)
+}
+
 class MainViewController: UIViewController {
+    var delegate: MainViewControllerDelegate?
 
     @IBOutlet weak var noteListTableView: UITableView!
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var addNoteButton_Outlet: UIButton!
-    
+
 //    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var noteListsInCoreData = [NoteList]()
+//    var noteListsInCoreData = [NoteList]()
     var filterNoteLists = [NoteList]()
     var selectedDatePicker = Date()
     
-    // MARK: ViewController Life Cycle
+    // MARK: - ViewController Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setDateTitle()
@@ -49,8 +54,6 @@ class MainViewController: UIViewController {
     }
     
     func setNoteTableView() {
-        let listCellNib = UINib(nibName: "ListCell", bundle: nil)
-        noteListTableView.register(listCellNib, forCellReuseIdentifier: "ListCell")
         noteListTableView.delegate = self
         noteListTableView.dataSource = self
         noteListTableView.separatorStyle = .none
@@ -86,7 +89,7 @@ class MainViewController: UIViewController {
     
     @IBAction func addNoteButtonTapped(_ sender: UIButton) {
         let addNoteVC = AddNoteViewController.init(nibName: "AddNoteViewController", bundle: nil)
-        addNoteVC.delegate = self // MainVC와 연결
+        addNoteVC.delegate = self // MainVC와 addNoteVC 연결
         addNoteVC.modalPresentationStyle = .overFullScreen
         self.present(addNoteVC, animated: false, completion: nil)
     }
@@ -108,6 +111,7 @@ class MainViewController: UIViewController {
 //            print(error)
 //        }
 //    }
+    
     // MARK: - fetchSelectedData - 선택한 날짜만 가져오기..?
     func fetchSelectedData() {
         let fetchRequest: NSFetchRequest<NoteList> = NoteList.fetchRequest()
@@ -151,9 +155,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     
     // MARK: 삭제 기능
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let note = self.noteListsInCoreData[indexPath.row]
+        let note = self.filterNoteLists[indexPath.row]
         if self.deleteNote(object: note), editingStyle == .delete {
-            noteListsInCoreData.remove(at: indexPath.row)
+            filterNoteLists.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -170,14 +174,18 @@ extension MainViewController: AddNoteViewControllerDeligate {
     }
 }
 
-// MARK: - SelectDateDeligate
+// MARK: - SelectDateVC Deligate
 extension MainViewController: SelectDateViewControllerDeligate {
-    func selectedDate(selectedDate: Date) {
-        selectedDatePicker = selectedDate
+    func didFinishSelectDate(_ selectedDate: Date) {
+        self.selectedDatePicker = selectedDate
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 \nMM월 dd일"
+        formatter.locale = Locale(identifier: "ko")
+        let dateString = formatter.string(from: selectedDate)
+        self.dateTitleLabel.text = dateString
+
         self.fetchSelectedData()
         self.noteListTableView.reloadData()
-    }
-    func getSelectedDateText(_ selectedDate: String) {
-        self.dateTitleLabel.text = selectedDate
     }
 }

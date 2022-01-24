@@ -9,8 +9,7 @@ import UIKit
 import CoreData
 
 protocol SelectDateViewControllerDeligate: AnyObject {
-    func getSelectedDateText(_ selectedDate: String)
-    func selectedDate( selectedDate: Date)
+    func didFinishSelectDate(_ selectedDate: Date)
 }
 
 class SelectDateViewController: UIViewController {
@@ -25,6 +24,11 @@ class SelectDateViewController: UIViewController {
         super.viewDidLoad()
         setPopUpView()
         makeSaveButtonDesign()
+        titleDatePicker.locale = Locale(identifier: "ko-KR")
+        titleDatePicker.timeZone = .autoupdatingCurrent
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        titleDatePicker.date = UserDefaults.standard.object(forKey: "dateSave") as? Date ?? Date()
     }
     
     func setPopUpView() {
@@ -42,16 +46,16 @@ class SelectDateViewController: UIViewController {
         dateSaveButton_Outlet.layer.cornerRadius = 10
         dateSaveButton_Outlet.layer.backgroundColor = UIColor.black.cgColor
     }
-
+    
+    // MARK: - IBAction - 완료 버튼 눌렀을 때
     @IBAction func dateSaveButtonTapped(_ sender: UIButton) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 \nMM월 dd일"
-        formatter.locale = Locale(identifier: "ko")
+        // 데이트 피커 값 저장
+        let theDate = titleDatePicker.date
+        UserDefaults.standard.setValue(theDate, forKey: "dateSave")
         
-        let dateString = formatter.string(from: titleDatePicker.date)
-        delegate?.getSelectedDateText(dateString)
+        // 선택한 데이트 피커 값 메인 텍스트 라벨로 전달
+        delegate?.didFinishSelectDate(theDate)
         
-        delegate?.selectedDate(selectedDate: titleDatePicker.date)
         self.dismiss(animated: false)
     }
 }

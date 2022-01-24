@@ -22,17 +22,29 @@ class AddNoteViewController: UIViewController {
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var saveButton_Outlet: UIButton!
     
+    var selectedDatePicker = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setPopUpView()
         makeSaveButtonDesign()
         setTextFieldBorder()
+        setDate()
+        
         titleTextField.delegate = self
         titleTextField.addTarget(self, action: #selector(changeSaveButton), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.titleTextField.becomeFirstResponder()
+    }
+    
+    func setDate() {
+        if let savedDate = UserDefaults.standard.object(forKey: "dateSave") as? Date{
+            selectedDatePicker = savedDate
+        }else{
+            selectedDatePicker = Date()
+        }
     }
     
     func setTextFieldBorder() {
@@ -74,6 +86,7 @@ class AddNoteViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         saveNote()
         delegate?.didFinishSaveData() // 저장 끝나는 시점에 데이터를 호출한다
+        
         // 화면 닫기
         self.dismiss(animated: true)
     }
@@ -90,7 +103,7 @@ class AddNoteViewController: UIViewController {
         // 어떤 값을 넣어서 저장할지 오브젝트 형태로 구조 잡기
         note.title = titleTextField.text?.trimmingCharacters(in: .whitespaces)
         note.uuid = UUID()
-        note.date = Date()
+        note.date = selectedDatePicker
         
         // 저장
         appDelegate.saveContext()

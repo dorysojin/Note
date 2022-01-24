@@ -23,19 +23,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B9e-qW-gzo">
-                    <rect key="frame" x="25" y="368" width="364" height="160"/>
+                    <rect key="frame" x="25" y="378" width="364" height="140"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="내용을 입력하세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfe-hH-av1">
-                            <rect key="frame" x="30" y="20" width="304" height="45"/>
+                            <rect key="frame" x="25" y="20" width="314" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="45" id="8GA-iE-YyF"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="x5q-Ux-39M"/>
+                                <constraint firstAttribute="height" constant="35" id="TBj-ZS-zKZ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiE-oN-gud">
-                            <rect key="frame" x="25" y="85" width="314" height="50"/>
+                            <rect key="frame" x="20" y="70" width="324" height="50"/>
                             <color key="backgroundColor" systemColor="systemGray5Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="otp-K3-xwC"/>
@@ -50,12 +49,12 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="MiE-oN-gud" firstAttribute="leading" secondItem="B9e-qW-gzo" secondAttribute="leading" constant="25" id="N6Z-8c-CgN"/>
-                        <constraint firstAttribute="height" constant="160" id="Uju-RR-gpp"/>
-                        <constraint firstAttribute="trailing" secondItem="MiE-oN-gud" secondAttribute="trailing" constant="25" id="VBy-dt-yHc"/>
-                        <constraint firstItem="mfe-hH-av1" firstAttribute="leading" secondItem="B9e-qW-gzo" secondAttribute="leading" constant="30" id="ZOI-J4-oCS"/>
-                        <constraint firstItem="MiE-oN-gud" firstAttribute="top" secondItem="mfe-hH-av1" secondAttribute="bottom" constant="20" id="avE-v9-cfH"/>
-                        <constraint firstAttribute="trailing" secondItem="mfe-hH-av1" secondAttribute="trailing" constant="30" id="bAN-ni-WEx"/>
+                        <constraint firstItem="MiE-oN-gud" firstAttribute="leading" secondItem="B9e-qW-gzo" secondAttribute="leading" constant="20" id="N6Z-8c-CgN"/>
+                        <constraint firstAttribute="trailing" secondItem="MiE-oN-gud" secondAttribute="trailing" constant="20" id="VBy-dt-yHc"/>
+                        <constraint firstItem="mfe-hH-av1" firstAttribute="leading" secondItem="B9e-qW-gzo" secondAttribute="leading" constant="25" id="ZOI-J4-oCS"/>
+                        <constraint firstItem="MiE-oN-gud" firstAttribute="top" secondItem="mfe-hH-av1" secondAttribute="bottom" constant="15" id="avE-v9-cfH"/>
+                        <constraint firstAttribute="trailing" secondItem="mfe-hH-av1" secondAttribute="trailing" constant="25" id="bAN-ni-WEx"/>
+                        <constraint firstAttribute="bottom" secondItem="MiE-oN-gud" secondAttribute="bottom" constant="20" id="bgc-du-ZTm"/>
                         <constraint firstItem="mfe-hH-av1" firstAttribute="top" secondItem="B9e-qW-gzo" secondAttribute="top" constant="20" id="lfW-lm-H6u"/>
                     </constraints>
                 </view>

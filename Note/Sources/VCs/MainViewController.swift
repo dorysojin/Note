@@ -147,7 +147,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListTitleCell", for: indexPath) as! ListTitleCell
         cell.listTitleLabel.text = filterNoteLists[indexPath.row].title
                 
         return cell
@@ -163,6 +163,20 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "삭제"
+    }
+    
+//    // 셀 높이
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 500
+//    }
+    // MARK: - prepare
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToNoteDetail" {
+            let cell = sender as! UITableViewCell
+            let indexPath = self.noteListTableView.indexPath(for: cell)
+            let noteDetailVC = segue.destination as! NoteDetailViewController
+            noteDetailVC.selectedNoteList = filterNoteLists[indexPath!.row]
+        }
     }
 }
 

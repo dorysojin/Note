@@ -9,10 +9,20 @@ import UIKit
 
 class NoteDetailViewController: UIViewController {
 
+//    var noteTitle = ""
+    
+    @IBOutlet weak var noteTitleLable: UILabel!
+    
+    var selectedNoteList = NoteList()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+//        noteTitleLable.text = noteTitle
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        noteTitleLable.text = selectedNoteList.title
     }
     
 

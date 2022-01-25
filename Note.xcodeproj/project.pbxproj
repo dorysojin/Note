@@ -16,13 +16,13 @@
 		2336A398279300AF009C7F18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2336A396279300AF009C7F18 /* LaunchScreen.storyboard */; };
 		2336A3A3279300AF009C7F18 /* NoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3A2279300AF009C7F18 /* NoteTests.swift */; };
 		2336A3AE279300AF009C7F18 /* NoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3AD279300AF009C7F18 /* NoteUITests.swift */; };
-		2336A3D02795378E009C7F18 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A3CE2795378E009C7F18 /* ListCell.swift */; };
 		2336A401279717EE009C7F18 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A400279717EE009C7F18 /* TabBarController.swift */; };
 		2336A4142797C57C009C7F18 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A4122797C57C009C7F18 /* AddNoteViewController.swift */; };
 		2336A4152797C57C009C7F18 /* AddNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2336A4132797C57C009C7F18 /* AddNoteViewController.xib */; };
 		2336A432279957CC009C7F18 /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A430279957CC009C7F18 /* SelectDateViewController.swift */; };
 		2336A433279957CC009C7F18 /* SelectDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2336A431279957CC009C7F18 /* SelectDateViewController.xib */; };
 		2336A440279AE173009C7F18 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A43F279AE173009C7F18 /* NoteDetailViewController.swift */; };
+		2336A44E279FC625009C7F18 /* ListTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336A44D279FC625009C7F18 /* ListTitleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,13 +58,13 @@
 		2336A3A9279300AF009C7F18 /* NoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2336A3AD279300AF009C7F18 /* NoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteUITests.swift; sourceTree = "<group>"; };
 		2336A3AF279300AF009C7F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2336A3CE2795378E009C7F18 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		2336A400279717EE009C7F18 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2336A4122797C57C009C7F18 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		2336A4132797C57C009C7F18 /* AddNoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNoteViewController.xib; sourceTree = "<group>"; };
 		2336A430279957CC009C7F18 /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		2336A431279957CC009C7F18 /* SelectDateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectDateViewController.xib; sourceTree = "<group>"; };
 		2336A43F279AE173009C7F18 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
+		2336A44D279FC625009C7F18 /* ListTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTitleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +187,7 @@
 		2336A3EF2796A935009C7F18 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				2336A3CE2795378E009C7F18 /* ListCell.swift */,
+				2336A44D279FC625009C7F18 /* ListTitleCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -329,7 +329,7 @@
 				2336A440279AE173009C7F18 /* NoteDetailViewController.swift in Sources */,
 				2336A389279300AD009C7F18 /* AppDelegate.swift in Sources */,
 				2336A38B279300AD009C7F18 /* SceneDelegate.swift in Sources */,
-				2336A3D02795378E009C7F18 /* ListCell.swift in Sources */,
+				2336A44E279FC625009C7F18 /* ListTitleCell.swift in Sources */,
 				2336A401279717EE009C7F18 /* TabBarController.swift in Sources */,
 				2336A432279957CC009C7F18 /* SelectDateViewController.swift in Sources */,
 				2336A393279300AD009C7F18 /* Note.xcdatamodeld in Sources */,

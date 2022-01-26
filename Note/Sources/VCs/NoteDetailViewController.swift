@@ -8,21 +8,21 @@
 import UIKit
 
 class NoteDetailViewController: UIViewController {
-
-//    var noteTitle = ""
     
     @IBOutlet weak var noteTitleLable: UILabel!
     
-    var selectedNoteList = NoteList()
+    var selectedNoteTitle: NoteList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        noteTitleLable.text = noteTitle
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        noteTitleLable.text = selectedNoteList.title
+        if let hasData = selectedNoteTitle {
+            self.navigationItem.title = hasData.title
+        }
     }
     
 

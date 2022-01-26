@@ -36,6 +36,7 @@ class AddNoteViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.titleTextField.becomeFirstResponder()
     }
     
@@ -93,14 +94,16 @@ class AddNoteViewController: UIViewController {
     
     //MARK: - 해당 정보를 코어데이터에 저장한다
     func saveNote() {
-        // 구조 만들기
+        // 1. context 가져오기
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         let context = appDelegate.persistentContainer.viewContext
         
+        // 2. entity 가져오기
         guard let entityDescription = NSEntityDescription.entity(forEntityName: "NoteList", in: context) else { return }
-        guard let note = NSManagedObject(entity: entityDescription, insertInto: context) as? NoteList else { return }
         
-        // 어떤 값을 넣어서 저장할지 오브젝트 형태로 구조 잡기
+        // 3. 오브젝트 관리 생성
+        guard let note = NSManagedObject(entity: entityDescription, insertInto: context) as? NoteList else { return }
+        // 4. 오브젝트에 값 세팅
         note.title = titleTextField.text?.trimmingCharacters(in: .whitespaces)
         note.uuid = UUID()
         note.date = selectedDatePicker

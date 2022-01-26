@@ -101,6 +101,15 @@ class MainViewController: UIViewController {
         self.present(selectDateVC, animated: false, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToNoteDetail" {
+            let cell = sender as! UITableViewCell
+            let indexPath = self.noteListTableView.indexPath(for: cell)
+            let noteDetailVC = segue.destination as! NoteDetailViewController
+            noteDetailVC.selectedNoteTitle = filterNoteLists[indexPath!.row]
+        }
+    }
+    
     // NoteList is entities name
     // MARK: fetchData - 모든 데이터 불러오기
 //    func fetchData() {
@@ -149,7 +158,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTitleCell", for: indexPath) as! ListTitleCell
         cell.listTitleLabel.text = filterNoteLists[indexPath.row].title
-                
+        
         return cell
     }
     
@@ -165,10 +174,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         return "삭제"
     }
     
-//    // 셀 높이
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 500
-//    }
     // MARK: - prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToNoteDetail" {
